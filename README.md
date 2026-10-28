@@ -9,7 +9,7 @@ index.html          Home page
 404.html            Not-found page (served automatically by GitHub Pages)
 assets/css/         Stylesheets (design tokens at top of style.css)
 assets/js/          Scripts
-assets/img/         Images and favicon
+assets/img/         Logo (logo.svg) and favicon
 robots.txt
 CNAME               Custom domain for GitHub Pages
 sitemap.xml         List of pages for search engines
@@ -17,6 +17,13 @@ sitemap.xml         List of pages for search engines
 ```
 
 No build step — edit the HTML/CSS/JS directly.
+
+## Brand
+
+- Colours: navy `#0f1c2e` / ink `#0b1522`, cyan accent `#0099bb` (tokens at the top of `style.css`)
+- Type: Space Grotesk (headings), DM Sans (body), JetBrains Mono (labels) via Google Fonts
+- Logo: `assets/img/logo.svg` — stroke-drawn wordmark; for a dark-on-light version change the
+  wordmark `stroke` colour to `#0f1c2e`
 
 ## Local preview
 
