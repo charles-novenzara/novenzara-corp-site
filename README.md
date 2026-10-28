@@ -11,6 +11,8 @@ assets/css/         Stylesheets (design tokens at top of style.css)
 assets/js/          Scripts
 assets/img/         Images and favicon
 robots.txt
+CNAME               Custom domain for GitHub Pages
+sitemap.xml         List of pages for search engines
 .nojekyll           Tells Pages to serve files as-is (no Jekyll build)
 ```
 
@@ -27,13 +29,25 @@ python3 -m http.server 8000
 
 1. Repo **Settings → Pages**.
 2. **Source:** "Deploy from a branch"; **Branch:** `main`, folder `/ (root)`.
-3. The site appears at `https://charles-novenzara.github.io/novenzara-corp-site/` within a minute or two.
+3. **Custom domain:** `novenzara.com` (already set via the `CNAME` file), then tick **Enforce HTTPS** once the certificate is issued.
 
-### Custom domain (optional)
+The site is served at **https://novenzara.com**.
 
-Add a `CNAME` file at the repo root containing the domain (e.g. `www.novenzara.com`),
-set the same domain under Settings → Pages, and configure DNS per
-[GitHub's docs](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site).
+### DNS (at the domain registrar)
 
-> Note: `404.html` uses root-relative paths (`/assets/...`), which resolve correctly
-> on a custom domain. Pages under `index.html` use relative paths and work either way.
+| Type  | Host  | Value                      |
+|-------|-------|----------------------------|
+| A     | `@`   | `185.199.108.153`          |
+| A     | `@`   | `185.199.109.153`          |
+| A     | `@`   | `185.199.110.153`          |
+| A     | `@`   | `185.199.111.153`          |
+| AAAA  | `@`   | `2606:50c0:8000::153`      |
+| AAAA  | `@`   | `2606:50c0:8001::153`      |
+| AAAA  | `@`   | `2606:50c0:8002::153`      |
+| AAAA  | `@`   | `2606:50c0:8003::153`      |
+| CNAME | `www` | `charles-novenzara.github.io` |
+
+Remove any other A/AAAA/CNAME records for `@` and `www` that point elsewhere.
+With `www` set up, GitHub redirects `www.novenzara.com` to `novenzara.com` automatically.
+See [GitHub's docs](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)
+for details, including verifying the domain to protect against takeover.
